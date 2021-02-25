@@ -30,8 +30,8 @@ DB_USERNAME=admin // 変更
 DB_PASSWORD=password // 変更
 ```
 - `php artisan migrate`
-- Access denied エラーが出たら、appコンテナを抜けて以下を実行
-  参考(https://qiita.com/fumi_042/items/7d1c14e335ab1c226e0f)
+- Access denied エラーが出たら、appコンテナを抜けて以下を実行<br>参考(https://qiita.com/fumi_042/items/7d1c14e335ab1c226e0f)
+
 ```
 docker-compose down --volumes
 docker-compose up -d --build
@@ -53,6 +53,5 @@ MEMCACHED_PORT=11211 // 追記
 - `docker exec -it app_1 ash`
 - `php artisan tinker`
 - `\Cache::store('memcached')->put('sample_key', 'sample_value', 600);`
-- `\Cache::store('memcached')->get('sample_key');`
-  `'sample_value'`と表示されれば接続確認完了
+- `\Cache::store('memcached')->get('sample_key');`<br>`'sample_value'`と表示されれば接続確認完了
 
