@@ -45,6 +45,7 @@ services:
       - 11211:11211
   node:
     image: node:14.16-alpine
+    container_name: node_1
     tty: true
     volumes:
       - ./laravel-app:/work
