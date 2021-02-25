@@ -43,5 +43,11 @@ services:
     container_name: memcached_1
     ports: 
       - 11211:11211
+  node:
+    image: node:14.16-alpine
+    tty: true
+    volumes:
+      - ./laravel-app:/work
+    working_dir: /work
 volumes:
   db-store:
