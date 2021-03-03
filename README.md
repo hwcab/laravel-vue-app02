@@ -8,7 +8,7 @@ docker-laravel01を以下のコンテナ構成に拡張したもの
 - memcached
 - node
 
-## 以下導入手順
+## 導入手順
 
 ### Dockerビルド
 - `docker-compose up -d --build`
@@ -55,3 +55,5 @@ MEMCACHED_PORT=11211 // 追記
 - `\Cache::store('memcached')->put('sample_key', 'sample_value', 600);`
 - `\Cache::store('memcached')->get('sample_key');`<br>`'sample_value'`と表示されれば接続確認完了
 
+### nodeコンテナに入りVueインストール
+- `npm install -D vue`
