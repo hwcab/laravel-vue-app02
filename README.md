@@ -13,15 +13,6 @@ docker-laravel01を以下のコンテナ構成に拡張したもの
 ### Dockerビルド
 - `docker-compose up -d --build`
 
-### .bashrc編集
-- `docker exec -it app_1 bash`
-- `cd ~`
-- `.bashrc`を作成、編集
-```
-alias ll='ls -la'
-export PS1="[\u@\h \w]$"
-```
-
 ### appコンテナに入りLaravelインストール
 - `docker exec -it app_1 bash`
 - `Project directory "/work/." is not empty.` が出たら、

@@ -34,3 +34,7 @@ RUN set -eux && \
   composer config -g process-timeout 3600 && \
   composer config -g repos.packagist composer https://packagist.jp && \
   composer global require hirak/prestissimo
+
+RUN cd ~ && \
+  touch .bashrc && \
+  echo -e "alias ll='ls -la'\nexport PS1='[\u@\h \w]$'" > .bashrc
