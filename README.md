@@ -1,12 +1,8 @@
-# docker-laravel02
-
-docker-laravel01を以下のコンテナ構成に拡張したもの
+# laravel-vue-app02
 
 - web
 - app
 - db
-- memcached
-- node
 
 ## 導入手順
 
@@ -14,10 +10,10 @@ docker-laravel01を以下のコンテナ構成に拡張したもの
 - `docker-compose up -d --build`
 
 ### appコンテナに入りLaravelインストール
-- `docker exec -it app_1 bash`
+- `docker exec -it lv2_app bash`
 - `Project directory "/work/." is not empty.` が出たら、
 `rm .DS_Store`
-- `composer create-project --prefer-dist laravel/laravel .`
+- `composer create-project --prefer-dist "laravel/laravel" .`
 
 ### MySQLに接続、マイグレーション確認
 - `laravel-app/.env` を編集
