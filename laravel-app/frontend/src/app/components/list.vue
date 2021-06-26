@@ -1,13 +1,13 @@
 <template>
   <div>
-    <router-link :to="{ name: 'add' }">新規追加</router-link>
-    <ul>
-      <li v-for="book in books" :key="book.id">
-        {{ book.id }}/{{ book.title }}/{{ book.author }}
-        <router-link :to="{ name: 'edit', params: { id: book.id } }"
+    <router-link :to="{ name: 'add' }">新規投稿</router-link>
+    <ul style="list-style: none">
+      <li v-for="tweet in tweets" :key="tweet.id">
+        {{ tweet.id }} / {{ tweet.name }} / {{ tweet.comment }}
+        <router-link :to="{ name: 'edit', params: { id: tweet.id } }"
           >編集</router-link
         >
-        <button @click="deleteBook(book.id)">削除</button>
+        <button @click="deleteTweet(tweet.id)">削除</button>
       </li>
     </ul>
 
@@ -22,28 +22,28 @@ export default {
   data() {
     return {
       message: "",
-      books: {},
+      tweets: {},
     };
   },
   created: function () {
-    this.getBook();
+    this.getTweet();
   },
   methods: {
-    getBook() {
+    getTweet() {
       axios
-        .get("/api/books/")
+        .get("/api/tweet/")
         .then((response) => {
-          this.books = response.data;
+          this.tweets = response.data;
         })
         .catch((error) => {
           this.message = error;
         });
     },
-    deleteBook(id) {
+    deleteTweet(id) {
       axios
-        .delete("/api/books/" + id)
+        .delete("/api/tweet/" + id)
         .then((response) => {
-          this.getBook();
+          this.getTweet();
           this.message = "";
         })
         .catch((error) => {

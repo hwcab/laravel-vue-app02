@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <h1>ヘッダー</h1>
+    <router-link tag="h1" to="/"><a>Switter</a></router-link>
     <div id="nav">
-      <router-link to="/books">Books</router-link>
+      <router-link to="/tweet">タイムライン</router-link> |
+      <router-link to="/search">検索</router-link> |
+      <router-link to="/dm">DM</router-link>
     </div>
     <router-view />
   </div>

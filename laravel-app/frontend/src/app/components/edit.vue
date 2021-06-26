@@ -1,15 +1,15 @@
 <template>
   <div>
-    <p>idが{{ book.id }}の編集フォーム</p>
-    <form @submit.prevent="updateBook">
+    <p>idが{{ tweet.id }}の編集フォーム</p>
+    <form @submit.prevent="updateTweet">
       <div>
-        <label>タイトル</label>
-        <input type="text" v-model="book.title" />
+        <label>名前</label>
+        <input type="text" v-model="tweet.name" />
       </div>
 
       <div>
-        <label>著者</label>
-        <input type="text" v-model="book.author" />
+        <label>投稿内容</label>
+        <input type="text" v-model="tweet.comment" />
       </div>
 
       <button>編集する</button>
@@ -27,27 +27,26 @@ export default {
   data() {
     return {
       message: "",
-      book: {},
+      tweet: {},
     };
   },
   created() {
     axios
-      .get("/api/books/" + this.$route.params.id)
-      .then((response) => (this.book = response.data))
-      .catch((erorr) => console.log(error));
+      .get("/api/tweet/" + this.$route.params.id)
+      .then((response) => (this.tweet = response.data));
   },
   methods: {
     updateCancel() {
-      this.$router.push({ name: "index" });
+      this.$router.push({ name: "list" });
     },
-    updateBook() {
+    updateTweet() {
       axios
-        .put("/api/books/" + this.book.id, {
-          title: this.book.title,
-          author: this.book.author,
+        .put("/api/tweet/" + this.tweet.id, {
+          name: this.tweet.name,
+          comment: this.tweet.comment,
         })
         .then((response) => {
-          this.$router.push({ name: "index" });
+          this.$router.push({ name: "list" });
         })
         .catch((erorr) => {
           this.message = erorr;

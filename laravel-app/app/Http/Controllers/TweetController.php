@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Book;
-use App\Http\Requests\StoreBook;
+use App\Models\Tweet;
+use App\Http\Requests\StoreTweet;
 
-class BookController extends Controller
+class TweetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        return Book::all();
+        return Tweet::all();
     }
 
     /**
@@ -26,7 +26,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        Book::create($request->all());
+        Tweet::create($request->all());
     }
 
     /**
@@ -37,7 +37,7 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        return Book::find($id);
+        return Tweet::find($id);
     }
 
     /**
@@ -50,10 +50,10 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         $update = [
-            'title' => $request->title,
-            'author' => $request->author
+            'name' => $request->name,
+            'comment' => $request->comment
         ];
-        Book::where('id', $id)->update($update);
+        Tweet::where('id', $id)->update($update);
     }
 
     /**
@@ -64,6 +64,6 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        Book::where('id', $id)->delete();
+        Tweet::where('id', $id)->delete();
     }
 }

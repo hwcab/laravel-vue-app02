@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('/books', 'App\Http\Controllers\BookController');
+Route::apiResource('/tweet', 'App\Http\Controllers\TweetController');

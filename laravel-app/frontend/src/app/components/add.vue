@@ -1,15 +1,14 @@
 <template>
   <div>
-    <router-link :to="{ name: 'index' }">トップ</router-link>
-    <form @submit.prevent="addBook">
+    <form @submit.prevent="addTweet">
       <div>
-        <label>タイトル</label>
-        <input type="text" v-model="title" />
+        <label>名前</label>
+        <input type="text" v-model="name" />
       </div>
 
       <div>
-        <label>著者</label>
-        <input type="text" v-model="author" />
+        <label>投稿内容</label>
+        <input type="text" v-model="comment" />
       </div>
 
       <button>追加</button>
@@ -26,20 +25,20 @@ export default {
   data() {
     return {
       message: "",
-      books: {},
-      title: "",
-      author: "",
+      tweets: {},
+      name: "",
+      comment: "",
     };
   },
   methods: {
-    addBook() {
+    addTweet() {
       axios
-        .post("/api/books/", {
-          title: this.title,
-          author: this.author,
+        .post("/api/tweet/", {
+          name: this.name,
+          comment: this.comment,
         })
         .then((response) => {
-          this.$router.push({ name: "index" });
+          this.$router.push({ name: "list" });
         })
         .catch((erorr) => {
           this.message = erorr;
