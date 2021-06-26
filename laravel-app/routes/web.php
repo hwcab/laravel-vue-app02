@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/{any}', function () {
+    return view('spa/index');
+})->where('any', '.*');
+
+// Route::get('/app', 'App\Http\Controllers\SpaController@app');

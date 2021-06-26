@@ -6,6 +6,9 @@
 
 ## 導入手順
 
+## .envファイル作成
+- .env.example を元に作成
+
 ### Dockerビルド
 - `docker-compose up -d --build`
 
@@ -19,9 +22,9 @@
 - `laravel-app/.env` を編集
 ```
 DB_CONNECTION=mysql
-DB_HOST=db_1 // 変更
+DB_HOST=lv2_db // 変更
 DB_PORT=3306
-DB_DATABASE=laravel_local // 変更
+DB_DATABASE=db_local // 変更
 DB_USERNAME=admin // 変更
 DB_PASSWORD=password // 変更
 ```
@@ -33,24 +36,16 @@ docker-compose down --volumes
 docker-compose up -d --build
 ```
 
-### npmインストール
-- `docker exec -it node_1 ash`
-- `npm install`
-- `npm run dev`
-
-### memcached接続確認
-- `laravel-app/.env` を編集
-```
-CACHE_DRIVER=memcached // 変更
-
-MEMCACHED_HOST=memcached_1 // 追記
-MEMCACHED_PORT=11211 // 追記
-```
-- `docker exec -it app_1 bash`
-- `php artisan tinker`
-- `\Cache::store('memcached')->put('sample_key', 'sample_value', 600);`
-- `\Cache::store('memcached')->get('sample_key');`<br>`'sample_value'`と表示されれば接続確認完了
-
-### nodeコンテナに入りVueインストール
-- `npm install -D vue`
-- `npm install -D vue-router`
+### vueインストール
+- `docker exec -it lv2_node ash`
+- `npm install -g @vue/cli`
+- `rm -rf package.json webpack.mix.js`
+- `vue create frontend`
+- `cd frontend`
+- `touch vue.config.js`
+- `cd frontend`
+- `mv src app`
+- `mkdir src`
+- `mv app src`
+- `mkdir templates`
+- `mv public/index.html templates/base.html`
