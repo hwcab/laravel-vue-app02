@@ -18,7 +18,7 @@
 `rm .DS_Store`
 - `composer create-project --prefer-dist "laravel/laravel" .`
 
-### MySQLに接続、マイグレーション確認
+### MySQLに接続&マイグレーション確認
 - `laravel-app/.env` を編集
 ```
 DB_CONNECTION=mysql
